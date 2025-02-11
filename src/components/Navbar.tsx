@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from './LanguageProvider';
+// import { useLanguage } from './LanguageProvider';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { FiMessageCircle } from 'react-icons/fi';
