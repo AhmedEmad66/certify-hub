@@ -2,15 +2,104 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  :root {
+    /* Light theme */
+    --background: #ffffff;
+    --foreground: #171717;
+    
+    /* Primary colors */
+    --primary-50: #f0f9ff;
+    --primary-100: #e0f2fe;
+    --primary-200: #bae6fd;
+    --primary-300: #7dd3fc;
+    --primary-400: #38bdf8;
+    --primary-500: #0ea5e9;
+    --primary-600: #0284c7;
+    --primary-700: #0369a1;
+    --primary-800: #075985;
+    --primary-900: #0c4a6e;
+    
+    /* Neutral colors */
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --neutral-900: #171717;
+  }
+
+  [data-theme='dark'] {
+    /* Dark theme with neon blue accents */
+    --background: #0a0a1a;
+    --foreground: #e5e5e5;
+    
+    /* Neon blue primary colors */
+    --primary-50: #edf8ff;
+    --primary-100: #def2ff;
+    --primary-200: #b6e5ff;
+    --primary-300: #75d1ff;
+    --primary-400: #2cb7ff;
+    --primary-500: #009fff;
+    --primary-600: #0077ff;
+    --primary-700: #005ce6;
+    --primary-800: #0050cc;
+    --primary-900: #003d99;
+    
+    /* Dark mode neutral colors */
+    --neutral-50: #171717;
+    --neutral-100: #262626;
+    --neutral-200: #404040;
+    --neutral-300: #525252;
+    --neutral-400: #737373;
+    --neutral-500: #a3a3a3;
+    --neutral-600: #d4d4d4;
+    --neutral-700: #e5e5e5;
+    --neutral-800: #f5f5f5;
+    --neutral-900: #fafafa;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom utilities */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px var(--primary-400),
+                 0 0 20px var(--primary-400),
+                 0 0 30px var(--primary-400);
+  }
+  
+  .box-glow {
+    box-shadow: 0 0 10px var(--primary-400),
+                0 0 20px var(--primary-400),
+                0 0 30px var(--primary-400);
+  }
+
+  @keyframes grid {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
   }
 }
 
