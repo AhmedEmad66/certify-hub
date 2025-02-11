@@ -5,10 +5,10 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { FiMessageCircle } from 'react-icons/fi';
 import { useTheme } from './ThemeProvider';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 export function Navbar() {
-  const { t, direction } = useLanguage();
+  // const { t, direction } = useLanguage();
   const { theme } = useTheme();
 
   return (
