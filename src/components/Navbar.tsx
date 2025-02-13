@@ -1,14 +1,12 @@
 'use client';
 
-// import { useLanguage } from './LanguageProvider';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ThemeSwitcher } from './ThemeSwitcher';
-import { FiMessageCircle } from 'react-icons/fi';
 import { useTheme } from './ThemeProvider';
-// import Link from 'next/link';
+import { RiTelegram2Fill } from "react-icons/ri";
+
 
 export function Navbar() {
-  // const { t, direction } = useLanguage();
   const { theme } = useTheme();
 
   return (
@@ -47,7 +45,7 @@ export function Navbar() {
               }`}
               aria-label="Telegram"
             >
-              <FiMessageCircle className="w-5 h-5" />
+              <RiTelegram2Fill className="w-5 h-5" />
             </a>
           </div>
         </div>

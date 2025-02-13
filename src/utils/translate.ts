@@ -20,6 +20,7 @@ export const translations = {
     contactOnTelegram: 'Contact us on Telegram',
     getStarted: 'Get Started',
     discount: '',
+    allRightsReserved: 'All rights reserved',
   },
   ar: {
     welcome: 'مرحباً',
@@ -38,6 +39,7 @@ export const translations = {
     contactOnTelegram: 'تواصل معنا على تيليجرام',
     getStarted: 'ابدأ الآن',
     discount:'خصم 50 ريال بمناسبة يوم التأسيس السعودي',
+    allRightsReserved: 'جميع الحقوق محفوظة',
   },
 } as const;
 

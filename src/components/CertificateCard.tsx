@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
 import { useLanguage } from './LanguageProvider';
 import { FiClock, FiBarChart2, FiPlayCircle } from 'react-icons/fi';
-import { useState } from 'react';
 
 interface CertificateCardProps {
   certificate: Certificate;
@@ -14,7 +13,6 @@ interface CertificateCardProps {
 export function CertificateCard({ certificate }: CertificateCardProps) {
   const { theme } = useTheme();
   const { direction, language } = useLanguage();
-  const [showVideo, setShowVideo] = useState(false);
 
   // Get localized content
   const title = language === 'ar' && certificate.titleAr ? certificate.titleAr : certificate.title;
@@ -26,113 +24,113 @@ export function CertificateCard({ certificate }: CertificateCardProps) {
     return `https://drive.google.com/uc?export=view&id=${fileId}`;
   };
 
-  // Convert Google Drive link to embedded video URL
-  const getVideoEmbedUrl = (url: string) => {
-    const fileId = url.match(/\/d\/(.*?)\//)![1];
-    return `https://drive.google.com/file/d/${fileId}/preview`;
-  };
-
   return (
     <div
-      className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
+      className={`relative rounded-lg overflow-hidden transition-all duration-300 ${
         theme === 'dark'
           ? 'bg-neutral-900/50 hover:bg-neutral-900/80'
           : 'bg-white hover:bg-neutral-50'
-      } hover:shadow-xl hover:shadow-primary-500/20`}
+      } hover:shadow-md hover:shadow-primary-500/20`}
     >
-      {/* Image and Video Container */}
+      {/* Image Container */}
       <div className="relative aspect-[4/3] overflow-hidden">
-        {showVideo && certificate.demolink ? (
-          <iframe 
-            src={getVideoEmbedUrl(certificate.demolink)} 
-            className="absolute inset-0 w-full h-full"
-            allow="autoplay"
-          />
-        ) : (
-          <>
-            <Image
-              src={getEmbedUrl(certificate.imageUrl)}
-              alt={title}
-              fill
-              className="object-cover transition-transform duration-500 hover:scale-110"
-            />
-            
-            {/* Demo Video Button */}
-            {certificate.demolink && (
-              <a
-                href={certificate.demolink}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setShowVideo(false)}
-                className={`absolute bottom-4 ${direction === 'rtl' ? 'left-4' : 'right-4'} 
-                  p-2 rounded-full bg-primary-500/90 text-white hover:bg-primary-600 
-                  transition-all duration-300 transform hover:scale-110`}
-              >
-                <FiPlayCircle className="w-6 h-6" />
-              </a>
-            )}
-          </>
+        <Image
+          src={getEmbedUrl(certificate.imageUrl)}
+          alt={title}
+          fill
+          className="object-cover transition-transform duration-500 hover:scale-105"
+        />
+        
+        {/* Demo Video Link */}
+        {certificate.demolink && (
+          <a
+            href={certificate.demolink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`absolute bottom-2 ${direction === 'rtl' ? 'left-2' : 'right-2'} 
+              p-1 rounded-full bg-primary-500/90 text-white hover:bg-primary-600 
+              transition-all duration-300 transform hover:scale-105`}
+          >
+            <FiPlayCircle className="w-3 h-3" />
+          </a>
         )}
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className={`text-xl font-bold mb-2 ${
+      <div className="p-2.5">
+        <h3 className={`text-base font-bold mb-1.5 ${
           theme === 'dark' ? 'text-primary-400' : 'text-primary-600'
         }`}>
           {title}
         </h3>
         
-        <p className={`mb-4 line-clamp-2 ${
+        <p className={`mb-2.5 text-xs ${
           theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
         }`}>
           {description}
         </p>
 
         {/* Certificate Details */}
-        <div className="flex gap-4 mb-4 text-sm text-neutral-500">
+        <div className="flex gap-2.5 mb-2.5 text-[10px] text-neutral-500">
           <div className="flex items-center gap-1">
-            <FiClock className="w-4 h-4" />
+            <FiClock className="w-3 h-3" />
             <span>{certificate.details.duration}</span>
           </div>
           <div className="flex items-center gap-1">
-            <FiBarChart2 className="w-4 h-4" />
+            <FiBarChart2 className="w-3 h-3" />
             <span>{certificate.details.level}</span>
           </div>
         </div>
 
-        {/* Prices */}
-        <div className={`flex gap-4 ${direction === 'rtl' ? 'flex-row-reverse' : 'flex-row'}`}>
-          <div className="flex-1">
-            <p className="text-sm text-neutral-500">USD</p>
-            <p className={`text-lg font-semibold ${
-              theme === 'dark' ? 'text-primary-300' : 'text-primary-700'
-            }`}>
-              ${certificate.price.usd}
-            </p>
+        {/* Prices and Buy Now */}
+        <div className="space-y-2">
+          {/* Prices */}
+          <div className={`flex gap-3 ${direction === 'rtl' ? 'flex-row-reverse' : 'flex-row'}`}>
+            <div>
+              <p className="text-[10px] text-neutral-500">USD</p>
+              <div className="flex items-center gap-1.5">
+                <p className={`text-sm font-semibold line-through opacity-75 ${
+                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+                }`}>
+                  ${certificate.price.usd}
+                </p>
+                <p className={`text-sm font-bold ${
+                  theme === 'dark' ? 'text-primary-300' : 'text-primary-700'
+                }`}>
+                  ${certificate.price.usd - 10}
+                </p>
+              </div>
+            </div>
+            <div>
+              <p className="text-[10px] text-neutral-500">SAR</p>
+              <div className="flex items-center gap-1.5">
+                <p className={`text-sm font-semibold line-through opacity-75 ${
+                  theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'
+                }`}>
+                  {certificate.price.sar} ﷼
+                </p>
+                <p className={`text-sm font-bold ${
+                  theme === 'dark' ? 'text-primary-300' : 'text-primary-700'
+                }`}>
+                  {certificate.price.sar - 50} ﷼
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="flex-1">
-            <p className="text-sm text-neutral-500">SAR</p>
-            <p className={`text-lg font-semibold ${
-              theme === 'dark' ? 'text-primary-300' : 'text-primary-700'
-            }`}>
-              {certificate.price.sar} ﷼
-            </p>
-          </div>
-        </div>
 
-        {/* Buy Now Button */}
-        <a
-          href="https://t.me/Abn3mad"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`mt-4 block w-full text-center py-2 px-4 rounded-lg 
-            bg-primary-500 text-white font-semibold
-            hover:bg-primary-600 transition-colors duration-300
-            ${theme === 'dark' ? 'hover:bg-primary-400' : 'hover:bg-primary-600'}`}
-        >
-          {language === 'ar' ? 'اشتري الآن' : 'Buy Now'}
-        </a>
+          {/* Buy Now Button */}
+          <a
+            href="https://t.me/Abn3mad"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`block w-full text-center py-1.5 px-3 rounded-md text-xs
+              bg-primary-500 text-white font-semibold
+              hover:bg-primary-600 transition-colors duration-300
+              ${theme === 'dark' ? 'hover:bg-primary-400' : 'hover:bg-primary-600'}`}
+          >
+            {language === 'ar' ? 'اشتري الآن' : 'Buy Now'}
+          </a>
+        </div>
       </div>
 
       {/* Hover Effect Overlay */}
