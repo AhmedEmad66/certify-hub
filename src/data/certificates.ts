@@ -20,7 +20,7 @@ export const certificates: Certificate[] = [
     },
     details: {
       duration: '1 day study',
-      level: 'Intermediate',
+      level: 'Advanced',
       prerequisites: [
         'Basic understanding of networking',
         'Familiarity with Wireshark',
