@@ -13,7 +13,7 @@ export const certificates: Certificate[] = [
     متاح دمب للامتحان عباره عن فيديو لكل سيناريو يعلمك ازاي تحله وتطلع كل incident مع شرح كل واحده فيهم وفيديو ازاي تكتب ريبورت صح 100%
     `,
     imageUrl: 'https://drive.google.com/file/d/1o4JQNKqRU80C0wcSGZk_t0iYOYGJWEe1/view?usp=sharing',
-    demolink: 'https://drive.google.com/file/d/12-xyVKaj_Jinlv-RHIcSkNVsblYWMEgK/view?usp=drive_link',
+    demolink: 'https://t.me/Abn3mad',
     price: {
       usd: 65,
       sar: 250
@@ -45,7 +45,7 @@ export const certificates: Certificate[] = [
 متاح دمب للامتحان عباره عن فيديو لكل سيناريو يعلمك ازاي تحله وتطلع كل incident مع شرح كل واحده فيهم وفيديو ازاي تكتب ريبورت صح 100%
 `,
     imageUrl: 'https://drive.google.com/file/d/1KaJIWN5JFtA1nypbcx7-eJ2pCFGjkUmj/view?usp=sharing',
-    demolink: 'https://drive.google.com/file/d/1UAGuF4-ojO3IJirH97QR0glcYxe4t8s5/view?usp=drive_link',
+    demolink: 'https://t.me/Abn3mad',
     price: {
       usd: 65,
       sar: 250
@@ -74,7 +74,7 @@ export const certificates: Certificate[] = [
 الامتحان مدته يومين 
 `,
     imageUrl: 'https://drive.google.com/file/d/1REOaAe7Hx9PJLKAv1TiGltcQh8ia13VF/view?usp=sharing',
-    demolink: 'https://drive.google.com/file/d/1_dz3lImCXso1uDo-ZgpLiJh4HGksuKlC/view',
+    demolink: 'https://t.me/Abn3mad',
     price: {
       usd: 65,
       sar: 250
